@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>正则表达式备忘录 | Jacky</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="正则表达式备忘录&amp;emsp;&amp;emsp;一直以来都是对正则表达式感觉很抵触，主要是因为正则不能 Debug ，一段很长的正则表达式，中间出错，修改一次耗费体力，因为平时很多处理字符串的操作，使得我十分头疼，同事 H 用一个正则就很轻巧的解决了这个问题，让我痛定思痛好好学习一下正则。
+JavaScript中的正则表达式&amp;emsp;&amp;emsp;JavaScript 创建正则表达式有 两种方式：
+使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式备忘录">
+<meta property="og:url" content="http://chonggao.me/2016/10/20/reg-exp/index.html">
+<meta property="og:site_name" content="Jacky">
+<meta property="og:description" content="正则表达式备忘录&amp;emsp;&amp;emsp;一直以来都是对正则表达式感觉很抵触，主要是因为正则不能 Debug ，一段很长的正则表达式，中间出错，修改一次耗费体力，因为平时很多处理字符串的操作，使得我十分头疼，同事 H 用一个正则就很轻巧的解决了这个问题，让我痛定思痛好好学习一下正则。
+JavaScript中的正则表达式&amp;emsp;&amp;emsp;JavaScript 创建正则表达式有 两种方式：
+使用">
+<meta property="og:image" content="http://o7artc98i.bkt.clouddn.com/wallhaven-148562.jpg">
+<meta property="og:updated_time" content="2016-10-20T03:33:43.533Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正则表达式备忘录">
+<meta name="twitter:description" content="正则表达式备忘录&amp;emsp;&amp;emsp;一直以来都是对正则表达式感觉很抵触，主要是因为正则不能 Debug ，一段很长的正则表达式，中间出错，修改一次耗费体力，因为平时很多处理字符串的操作，使得我十分头疼，同事 H 用一个正则就很轻巧的解决了这个问题，让我痛定思痛好好学习一下正则。
+JavaScript中的正则表达式&amp;emsp;&amp;emsp;JavaScript 创建正则表达式有 两种方式：
+使用">
+<meta name="twitter:image" content="http://o7artc98i.bkt.clouddn.com/wallhaven-148562.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="http://o7artc98i.bkt.clouddn.com/chonggao.png" />
+    
+
+    <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/vendor/open-sans/styles.css">
+    <link rel="stylesheet" href="/vendor/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/vendor/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/vendor/fancybox/jquery.fancybox.css">
+    
+    
+    
+    
+
+</head>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                
+                <span class="site-title">Jacky</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">主页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/about">关于我</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="http://o7artc98i.bkt.clouddn.com/chonggao.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">主页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于我</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="http://o7artc98i.bkt.clouddn.com/chonggao.png" />
+            <h2 id="name">chonggao.liu</h2>
+            <h3 id="title">Web Developer &amp; Front to End</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Beijing, China</span>
+            <a id="follow" target="_blank" href="https://github.com/liuchonggao/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                3
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                4
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    <td><a href="http://github.com/liuchonggao" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+                    
+                    <td><a href="https://twitter.com/CG_Liu" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
+                    
+                    <td><a href="https://www.facebook.com/chonggao.liu" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-reg-exp" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            正则表达式备忘录
+        </h1>
+    
+
+                <div class="article-meta">
+                    
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/10/20/reg-exp/">
+            <time datetime="2016-10-20T02:55:27.000Z" itemprop="datePublished">2016-10-20</time>
+        </a>
+    </div>
+
+
+                    
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/RegExp/">RegExp</a>
+    </div>
+
+                </div>
+            </header>
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><img src="http://o7artc98i.bkt.clouddn.com/wallhaven-148562.jpg" alt=""></p>
+<h3 id="正则表达式备忘录"><a href="#正则表达式备忘录" class="headerlink" title="正则表达式备忘录"></a>正则表达式备忘录</h3><p>&emsp;&emsp;一直以来都是对正则表达式感觉很抵触，主要是因为正则不能 Debug ，一段很长的正则表达式，中间出错，修改一次耗费体力，因为平时很多处理字符串的操作，使得我十分头疼，同事 H 用一个正则就很轻巧的解决了这个问题，让我痛定思痛好好学习一下正则。</p>
+<h3 id="JavaScript中的正则表达式"><a href="#JavaScript中的正则表达式" class="headerlink" title="JavaScript中的正则表达式"></a>JavaScript中的正则表达式</h3><h5 id="emsp-emsp-JavaScript-创建正则表达式有-两种方式："><a href="#emsp-emsp-JavaScript-创建正则表达式有-两种方式：" class="headerlink" title="&emsp;&emsp;JavaScript 创建正则表达式有 两种方式："></a>&emsp;&emsp;JavaScript 创建正则表达式有 <strong>两种方式</strong>：</h5><ul>
+<li>使用正则表达式字面量：<code>var re = /abcd/;</code></li>
+<li>调用 RegExp 对象的构造函数：<code>var re = new RegExp(&quot;abcd&quot;);</code></li>
+</ul>
+<h5 id="emsp-emsp-构造函数使用场景："><a href="#emsp-emsp-构造函数使用场景：" class="headerlink" title="&emsp;&emsp;构造函数使用场景："></a>&emsp;&emsp;构造函数使用场景：</h5><ul>
+<li>当正则表达式的模式会变发生改变</li>
+<li>需要从其他地方得到时（例如用户输入）</li>
+</ul>
+<h3 id="匹配字符表"><a href="#匹配字符表" class="headerlink" title="匹配字符表"></a>匹配字符表</h3><ul>
+<li><code>\</code>：将其后的特殊字符转义为字面量</li>
+<li><code>^</code>：匹配输入的开始</li>
+<li><code>$</code>：匹配输入的结束</li>
+<li><code>*</code>：匹配前一个表达式0次或者多次，等价于 {0,}</li>
+<li><code>+</code>：匹配前一个表达式1次或多次，等价于 {1,}</li>
+<li><code>?</code>：匹配前一个表达式0次或者1次，等价于 {0,1}</li>
+<li><code>.</code>：匹配除了换行符（\n）之外的任何单个字符</li>
+<li><code>(x)</code>：匹配「x」并记住匹配项</li>
+<li><code>(?:x)</code>：匹配「x」但不记住匹配项</li>
+<li><code>x(?=y)</code>: 匹配「x」并且「x」后面跟着「y」也叫作正向肯定查找</li>
+<li><code>x(?!y)</code>：匹配「x」并且「x」后面不跟着「y」也叫作正向否定查找</li>
+<li><code>x | y</code>：匹配「x」或者「y」</li>
+<li><code>{n}</code>：匹配前一个字符 n 次</li>
+<li><code>{n, m}</code>：匹配前一个字符最少 n 次</li>
+<li><code>[xyz]</code>：匹配括号中的任意一个字符，可以使用 <code>-</code> 指定范围</li>
+<li><code>[^xyz]</code>: 匹配任何不在括号中的字符</li>
+<li><code>\b</code>：匹配一个词的边界</li>
+<li><code>\B</code>：匹配非单词边界</li>
+<li><code>\d</code>：匹配一个数字</li>
+<li><code>\D</code>：匹配一个非数字字符，等价于 [^0-9]</li>
+<li><code>\f</code>：匹配一个换页符</li>
+<li><code>\n</code>：匹配一个换行符</li>
+<li><code>\r</code>: 匹配一个回车符</li>
+<li><code>\s</code>：匹配一个空白字符</li>
+<li><code>\S</code>：匹配一个非空白字符</li>
+<li><code>\t</code>：匹配一个水平制表符</li>
+<li><code>\v</code>: 匹配一个垂直制表符</li>
+<li><code>\w</code>：匹配一个单字字符，等价于 [A-Za-z0-9_]</li>
+<li><code>\W</code>：匹配一个非单字字符，等价于 [^A-Za-z0-9_]</li>
+</ul>
+<h3 id="网站分享"><a href="#网站分享" class="headerlink" title="网站分享"></a>网站分享</h3><p>&emsp;&emsp;虽说正则不能 Debug 但是有一些可以辅助你查看正则的网站，例如 <a href="https://jex.im/regulex/" target="_blank" rel="external">Regulex</a> <br><br><img src="http://o7artc98i.bkt.clouddn.com/reg.png" alt=""></p>
+<h3 id="文章参考"><a href="#文章参考" class="headerlink" title="文章参考"></a>文章参考</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions" target="_blank" rel="external">《正则表达式》</a> MDN文档推荐<br><a href="http://www.cnblogs.com/rubylouvre/archive/2010/03/09/1681222.html" target="_blank" rel="external">《javascript正则表达式》</a> 司徒正美早期文章，依旧值得参考<br><a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="external">《正则表达式30分钟入门教程》</a> 说是30分钟但是值得推敲和思考</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://chonggao.me/2016/10/20/reg-exp/" data-id="civd9qdg80005dcnzblosngop" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://chonggao.me/2016/10/20/reg-exp/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://chonggao.me/2016/10/20/reg-exp/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2016/11/11/first-array/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    初探 JS 数组
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/07/25/beautiful-world/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">前端很美 而你刚好有空</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+</section>
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/11/11/first-array/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/11/11/first-array/" class="title">初探 JS 数组</a></p>
+                            <p class="item-date"><time datetime="2016-11-11T04:07:01.000Z" itemprop="datePublished">2016-11-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/10/20/reg-exp/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o7artc98i.bkt.clouddn.com/wallhaven-148562.jpg)" alt="正则表达式备忘录" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/10/20/reg-exp/" class="title">正则表达式备忘录</a></p>
+                            <p class="item-date"><time datetime="2016-10-20T02:55:27.000Z" itemprop="datePublished">2016-10-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2016/07/25/beautiful-world/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://o7artc98i.bkt.clouddn.com/preview_wallhaven-371688.jpg)" alt="前端很美 而你刚好有空" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2016/07/25/beautiful-world/" class="title">前端很美 而你刚好有空</a></p>
+                            <p class="item-date"><time datetime="2016-07-25T07:00:22.000Z" itemprop="datePublished">2016-07-25</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">十一月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/First-Article/">First Article</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RegExp/">RegExp</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/First-Article/" style="font-size: 10px;">First Article</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/RegExp/" style="font-size: 10px;">RegExp</a>
+        </div>
+    </div>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2016 Chonggao Liu<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.<!-- Theme by <a href="http://github.com/ppoffice">PPOffice</a>-->
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'chonggao';
+    
+    
+    var disqus_url = 'http://chonggao.me/2016/10/20/reg-exp/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+    
+        <script src="/vendor/fancybox/jquery.fancybox.pack.js"></script>
+    
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
